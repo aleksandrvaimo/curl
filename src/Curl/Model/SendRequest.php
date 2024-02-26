@@ -2,11 +2,11 @@
 
 namespace Curl\Model;
 
-use CurlHandle;
-use json_decode;
 use Curl\Api\CustomerDataInterface;
 use Curl\Api\ErrorHandlerInterface;
 use Curl\Api\SendRequestInterface;
+use CurlHandle;
+use json_decode;
 use strlen;
 
 class SendRequest implements SendRequestInterface
@@ -57,9 +57,13 @@ class SendRequest implements SendRequestInterface
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => $jsonData,
             CURLOPT_HTTPHEADER => [
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($jsonData)
-            ]
+                self::CURL_CONTENT_TYPE,
+                self::CURL_CONTENT_LENGTH . strlen($jsonData)
+            ],
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_SSL_VERIFYPEER => true,
         ];
     }
 
