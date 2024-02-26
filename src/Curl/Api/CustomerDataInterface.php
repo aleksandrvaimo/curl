@@ -4,7 +4,7 @@ namespace Curl\Api;
 
 interface CustomerDataInterface
 {
-    public const TIME_FORMAT = 'Y-m-d';
+    public const TIME_FORMAT = 'Y-m-d H:i:s';
     public const SIGNATURE_CODE = 'credy';
     public const KEY_TIMESTAMP = 'timestamp';
     public const KEY_SIGNATURE = 'signature';
